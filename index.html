@@ -16,28 +16,32 @@
             <h1>校园智行助手</h1>
           </div>
         </div>
+
         <nav class="nav">
           <button class="nav-item active" data-view="qa">校园问答</button>
           <button class="nav-item" data-view="plan">学习计划</button>
           <button class="nav-item" data-view="analysis">能耗分析</button>
         </nav>
+
         <section class="config">
           <h2>模型接口</h2>
           <label>
             接口类型
             <select id="apiType">
-              <option value="mock">离线演示</option>
-              <option value="openai">OpenAI 兼容</option>
+              <option value="mock" selected>离线演示</option>
               <option value="ollama">Ollama 本地</option>
+              <option value="doubao">豆包（火山方舟）</option>
+              <option value="deepseek">DeepSeek</option>
+              <option value="openai">OpenAI 兼容</option>
             </select>
           </label>
           <label>
             API 地址
-            <input id="apiUrl" value="http://localhost:11434" />
+            <input id="apiUrl" value="local-demo" />
           </label>
           <label>
             模型名称
-            <input id="modelName" value="qwen2.5:7b" />
+            <input id="modelName" value="demo-rule-model" />
           </label>
           <label>
             API Key
@@ -58,7 +62,7 @@
         <section class="panel view active" id="view-qa">
           <div class="panel-copy">
             <h3>AI 校园咨询台</h3>
-            <p>输入课程、图书馆、食堂、社团等问题，系统会调用大模型生成回答；没有接口时自动使用演示回复。</p>
+            <p>输入课程、图书馆、食堂、社团等问题，系统会调用大模型生成回答；没有接口时也可以使用演示回复。</p>
           </div>
           <div class="chat-box" id="chatLog">
             <div class="message bot">你好，我是校园智行助手。可以问我“今天自习怎么安排”或“图书馆有什么使用建议”。</div>
@@ -86,7 +90,7 @@
         <section class="panel view" id="view-analysis">
           <div class="panel-copy">
             <h3>校园能耗数据分析</h3>
-            <p>内置一组教学楼用电数据，点击按钮后计算高峰时段并生成节能建议。</p>
+            <p>内置一组教学楼用电数据，点击按钮后计算高峰建筑并生成节能建议。</p>
           </div>
           <div class="stats">
             <div><strong id="totalPower">--</strong><span>总用电量 kWh</span></div>
